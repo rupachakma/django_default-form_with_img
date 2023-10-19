@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div>
+    <h3>Home Page</h3>
+    <div class="card bg-white">
+        {% for i in post %}
+        <img src="{% if i.profileimg %}{{i.profileimg.url}} {% else %}''{% endif %}" alt="" width="200px">
+        <h2>{{i.title}}</h2>
+        <p>{{i.description}}</p>
+        
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock content %}

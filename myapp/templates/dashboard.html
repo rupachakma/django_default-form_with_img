@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block messages %}
+{% if messages %}
+
+{% for i in messages %}
+<div {% if i.meeages  %} class = 'alert alert-{{i.tags}}' {% endif %}>
+   {{i}} 
+</div>
+{% endfor %}
+{% endif %}
+{% endblock messages %}
+
+{% block content %}
+<div>
+    <h4>dashboard Page</h4>
+    <h3 class="text-center">Information table</h3>
+    <a href="{% url 'addpage' %}" class ="btn btn-success btn-sm mb-2">Add Post</a>
+
+    {% if post %}
+        <table class="table table-bordered" >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <td>Image</td>
+                    <th>Action</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in post %}
+                <tr>
+                    <td class="align-middle~">{{i.id}}</td>
+                    <td class="align-middle">{{i.title}}</td>
+                    <td>{{i.description}}</td>
+                    <td>
+                        <img src="{{i.profileimg.url}}" alt="" width="80px">
+                    </td>
+                    <td class="align-middle">
+            
+                     <div class="d-flex gap-2 ">
+                        <a href="{% url 'updatepage' i.id %}" class="btn btn-warning btn-sm">Update</a>
+                        <a href="{% url 'deletepage' i.id %}" type="submit" class="btn btn-danger btn-sm">Delete</a>
+                     </div>       
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock content %}

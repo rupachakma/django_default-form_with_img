@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div>
+    <div>
+        <h3>Add here !!</h3>
+
+    </div>
+    <div>
+        <form action="" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-success btn-sm mb-2" value="Add">
+            <a href="{% url 'dashboardpage' %}" class="btn btn-danger btn-sm mb-2">cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}

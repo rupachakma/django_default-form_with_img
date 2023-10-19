@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div>
+    <h3>Login Here</h3>
+    {% if messages %}
+    {% for i in messages %}
+    <p {% if msg.tags %} class = "alert alert-{{i.tags}}"{% endif %}>{{i}}</p>
+
+    {% endfor %}
+    {% endif %}
+
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            {% for i in form %}
+            <div>
+                {{ i.label_tag }} {{i}} <small>{{i.errors|striptags}}</small>
+            </div>
+            {% endfor %}
+            <input type="submit" class="btn btn-success btn-sm mt-2 mb-2" value="submit">
+            {% if form.non_field_errors %}
+            <p>{{i}}</p>
+            {% for i  in form.non_field_errors %}
+            {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock content %}
